@@ -1,5 +1,6 @@
 "use client";
 
+import { introLogoMedia } from "@/content/media";
 import { useEffect, useState } from "react";
 
 export function IntroSplash() {
@@ -34,8 +35,8 @@ export function IntroSplash() {
           onEnded={closeIntro}
           onError={closeIntro}
         >
-          <source src="/legacy/logo.webm" type="video/webm" />
-          <source src="/legacy/logo.mp4" type="video/mp4" />
+          <source src={introLogoMedia.webm} type="video/webm" />
+          <source src={introLogoMedia.mp4} type="video/mp4" />
         </video>
       </div>
       <button type="button" className="intro-skip" onClick={closeIntro}>

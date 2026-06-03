@@ -1,4 +1,5 @@
 import { IntroSplash } from "@/components/IntroSplash";
+import { heroMedia, legacyMedia, photoFragments, serviceImages } from "@/content/media";
 import Image from "next/image";
 
 const services = [
@@ -6,19 +7,19 @@ const services = [
     title: "映像制作",
     copy: "会社紹介、採用、商品紹介、広告動画まで。伝えたいことを、最後まで見たくなる物語にします。",
     outcome: "商談前の説明コストを減らす",
-    image: "/legacy/photos/service-1.jpg",
+    image: serviceImages.videoProduction,
   },
   {
     title: "Web制作",
     copy: "コーポレートサイト、LP、採用サイトを設計から実装まで。見た目の驚きと問い合わせ導線を両立します。",
     outcome: "初回接触の信頼をつくる",
-    image: "/legacy/photos/service-5.jpg",
+    image: serviceImages.webProduction,
   },
   {
     title: "クリエイティブ設計",
     copy: "企画、コピー、導線、SNS展開まで。映像とWebが同じ方向を向くように整理します。",
     outcome: "伝える順番を整える",
-    image: "/legacy/photos/service-3.jpg",
+    image: serviceImages.creativePlanning,
   },
 ];
 
@@ -42,70 +43,6 @@ const missions = [
   "MISSION 03: 採用ページへ体温を追加",
   "MISSION 04: 社内用語を顧客語へ翻訳",
   "MISSION 05: 問い合わせボタンを目立たせる",
-];
-
-const legacyMedia = [
-  {
-    title: "旧サイトのトップ映像",
-    src: "/legacy/home-movie.webm",
-    fallback: "/legacy/home-movie.mp4",
-    copy: "すでにあるルデラらしさを、新サイトの第一印象へ移植します。",
-  },
-  {
-    title: "会社紹介モーション",
-    src: "/legacy/company-movie.webm",
-    fallback: "/legacy/company-movie.mp4",
-    copy: "旧サイトの空気感を残しながら、より強い導線へ組み替えます。",
-  },
-  {
-    title: "ロゴモーション",
-    src: "/legacy/logo.webm",
-    fallback: "/legacy/logo.mp4",
-    copy: "ブランドの動きは、記憶に残る小さな合図として使います。",
-  },
-];
-
-const photoFragments = [
-  {
-    src: "/legacy/photos/company-top.jpg",
-    alt: "旧サイトの会社紹介ビジュアル",
-    label: "Company mood",
-  },
-  {
-    src: "/legacy/photos/contact-top.jpg",
-    alt: "旧サイトの問い合わせセクションビジュアル",
-    label: "Contact signal",
-  },
-  {
-    src: "/legacy/photos/home-sec2.png",
-    alt: "旧サイトのホームセクション画像",
-    label: "Home fragment",
-  },
-  {
-    src: "/legacy/photos/service-2.jpg",
-    alt: "旧サイトのサービス紹介写真",
-    label: "Service scene",
-  },
-  {
-    src: "/legacy/photos/service-4.jpg",
-    alt: "旧サイトのサービス紹介素材",
-    label: "Making piece",
-  },
-  {
-    src: "/legacy/photos/service-6.jpg",
-    alt: "旧サイトの制作素材",
-    label: "Production bit",
-  },
-  {
-    src: "/legacy/photos/service-7.jpg",
-    alt: "旧サイトの制作写真",
-    label: "Visual proof",
-  },
-  {
-    src: "/legacy/photos/legacy-image.jpg",
-    alt: "旧サイトから引き継いだ写真素材",
-    label: "Archive",
-  },
 ];
 
 const process = [
@@ -199,11 +136,11 @@ export default function Home() {
             loop
             muted
             playsInline
-            poster="/legacy/kv.jpg"
+            poster={heroMedia.poster}
             aria-label="旧サイトから引き継いだルデラの映像素材"
           >
-            <source src="/legacy/home-movie.webm" type="video/webm" />
-            <source src="/legacy/home-movie.mp4" type="video/mp4" />
+            <source src={heroMedia.webm} type="video/webm" />
+            <source src={heroMedia.mp4} type="video/mp4" />
           </video>
         </div>
       </section>
