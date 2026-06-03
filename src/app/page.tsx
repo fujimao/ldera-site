@@ -1,4 +1,5 @@
 import { IntroSplash } from "@/components/IntroSplash";
+import { MadnessLayer } from "@/components/MadnessLayer";
 import { heroMedia, legacyMedia, photoFragments, serviceImages } from "@/content/media";
 import Image from "next/image";
 
@@ -43,6 +44,30 @@ const missions = [
   "MISSION 03: 採用ページへ体温を追加",
   "MISSION 04: 社内用語を顧客語へ翻訳",
   "MISSION 05: 問い合わせボタンを目立たせる",
+];
+
+const overloadSignals = [
+  {
+    title: "真面目を沸騰させる",
+    copy: "会社案内の温度を上げ、見る人の脳内に小さな違和感を残します。",
+  },
+  {
+    title: "説明資料を爆速翻訳",
+    copy: "長い説明を、映像とWebのリズムで一気に飲み込みやすくします。",
+  },
+  {
+    title: "問い合わせ導線を発光",
+    copy: "目立つだけではなく、押したくなる場所まで気持ちを運びます。",
+  },
+];
+
+const chaosRecipes = [
+  ["0.2秒の違和感", "記憶にひっかける"],
+  ["妙に強い余白", "高級感をねじる"],
+  ["動くロゴ", "初見の脳を起こす"],
+  ["写真の暴れ配置", "旧素材を再起動する"],
+  ["変なコピー", "商談の入口を作る"],
+  ["ちゃんとした導線", "成果へ帰還する"],
 ];
 
 const process = [
@@ -95,6 +120,7 @@ export default function Home() {
   return (
     <>
       <IntroSplash />
+      <MadnessLayer />
       <main>
         <header className="site-header">
         <a href="#top" className="brand" aria-label="株式会社ルデラ トップへ">
@@ -117,10 +143,15 @@ export default function Home() {
         </div>
         <div className="hero-copy">
           <p className="eyebrow">Video production / Web production</p>
-          <h1>株式会社ルデラ</h1>
+          <h1 className="glitch-title" data-text="株式会社ルデラ">株式会社ルデラ</h1>
           <p className="lead">
             映像とWebで、会社の魅力を「なんか忘れられない」に変える制作会社です。
           </p>
+          <div className="hero-badges" aria-label="ルデラの制作テンション">
+            <span>ユーモア濃度 MAX</span>
+            <span>常識 たまに留守</span>
+            <span>成果には帰る</span>
+          </div>
           <div className="hero-actions">
             <a className="primary-button" href="#contact">
               相談する
@@ -162,6 +193,22 @@ export default function Home() {
         <span>思い出される</span>
       </section>
 
+      <section className="chaos-alert" aria-label="ルデラの過激な制作信号">
+        <div className="alert-copy">
+          <p className="eyebrow">Overdrive</p>
+          <h2>会社サイトを、ただの会社サイトで終わらせない。</h2>
+        </div>
+        <div className="alert-grid">
+          {overloadSignals.map((signal) => (
+            <article key={signal.title}>
+              <span>WARNING</span>
+              <h3>{signal.title}</h3>
+              <p>{signal.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="odd-strip" aria-label="ルデラの制作姿勢">
         {oddPromises.map((promise) => (
           <span key={promise}>{promise}</span>
@@ -201,6 +248,22 @@ export default function Home() {
           <span className="lab-note note-e">変</span>
           <span className="lab-note note-f">でも効く</span>
           <span className="lab-core">成果</span>
+        </div>
+      </section>
+
+      <section className="section recipe-section">
+        <div className="section-heading">
+          <p className="eyebrow">Recipe</p>
+          <h2>ユーモアを、ちゃんと調合します。</h2>
+        </div>
+        <div className="recipe-grid">
+          {chaosRecipes.map(([input, output], index) => (
+            <article key={input}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <p>{input}</p>
+              <strong>{output}</strong>
+            </article>
+          ))}
         </div>
       </section>
 
