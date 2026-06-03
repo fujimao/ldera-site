@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const services = [
   {
     title: "映像制作",
@@ -38,6 +36,27 @@ const missions = [
   "MISSION 03: 採用ページへ体温を追加",
   "MISSION 04: 社内用語を顧客語へ翻訳",
   "MISSION 05: 問い合わせボタンを目立たせる",
+];
+
+const legacyMedia = [
+  {
+    title: "旧サイトのトップ映像",
+    src: "/legacy/home-movie.webm",
+    fallback: "/legacy/home-movie.mp4",
+    copy: "すでにあるルデラらしさを、新サイトの第一印象へ移植します。",
+  },
+  {
+    title: "会社紹介モーション",
+    src: "/legacy/company-movie.webm",
+    fallback: "/legacy/company-movie.mp4",
+    copy: "旧サイトの空気感を残しながら、より強い導線へ組み替えます。",
+  },
+  {
+    title: "ロゴモーション",
+    src: "/legacy/logo.webm",
+    fallback: "/legacy/logo.mp4",
+    copy: "ブランドの動きは、記憶に残る小さな合図として使います。",
+  },
 ];
 
 const process = [
@@ -124,13 +143,17 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-visual" aria-label="映像制作とWeb制作を表すビジュアル">
-          <Image
-            src="/images/rudera-hero.png"
-            alt="映像制作スタジオとWeb制作画面が融合した先進的なビジュアル"
-            fill
-            priority
-            sizes="(max-width: 900px) 100vw, 54vw"
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/legacy/kv.jpg"
+            aria-label="旧サイトから引き継いだルデラの映像素材"
+          >
+            <source src="/legacy/home-movie.webm" type="video/webm" />
+            <source src="/legacy/home-movie.mp4" type="video/mp4" />
+          </video>
         </div>
       </section>
 
@@ -190,6 +213,27 @@ export default function Home() {
           <span className="lab-note note-e">変</span>
           <span className="lab-note note-f">でも効く</span>
           <span className="lab-core">成果</span>
+        </div>
+      </section>
+
+      <section className="section legacy-media">
+        <div className="section-heading">
+          <p className="eyebrow">Legacy Assets</p>
+          <h2>旧サイトの素材も、ちゃんと暴れさせます。</h2>
+        </div>
+        <div className="legacy-grid">
+          {legacyMedia.map((media) => (
+            <article key={media.title}>
+              <div className="legacy-video">
+                <video autoPlay loop muted playsInline>
+                  <source src={media.src} type="video/webm" />
+                  <source src={media.fallback} type="video/mp4" />
+                </video>
+              </div>
+              <h3>{media.title}</h3>
+              <p>{media.copy}</p>
+            </article>
+          ))}
         </div>
       </section>
 
