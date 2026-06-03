@@ -1,3 +1,4 @@
+import { BriefCatcherGame } from "@/components/BriefCatcherGame";
 import { IntroSplash } from "@/components/IntroSplash";
 import { MadnessLayer } from "@/components/MadnessLayer";
 import { heroMedia, legacyMedia, photoFragments, serviceImages } from "@/content/media";
@@ -266,6 +267,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <BriefCatcherGame />
 
       <section className="section legacy-media">
         <div className="section-heading">
