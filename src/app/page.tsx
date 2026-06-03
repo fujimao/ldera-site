@@ -1,20 +1,24 @@
 import { IntroSplash } from "@/components/IntroSplash";
+import Image from "next/image";
 
 const services = [
   {
     title: "映像制作",
     copy: "会社紹介、採用、商品紹介、広告動画まで。伝えたいことを、最後まで見たくなる物語にします。",
     outcome: "商談前の説明コストを減らす",
+    image: "/legacy/photos/service-1.jpg",
   },
   {
     title: "Web制作",
     copy: "コーポレートサイト、LP、採用サイトを設計から実装まで。見た目の驚きと問い合わせ導線を両立します。",
     outcome: "初回接触の信頼をつくる",
+    image: "/legacy/photos/service-5.jpg",
   },
   {
     title: "クリエイティブ設計",
     copy: "企画、コピー、導線、SNS展開まで。映像とWebが同じ方向を向くように整理します。",
     outcome: "伝える順番を整える",
+    image: "/legacy/photos/service-3.jpg",
   },
 ];
 
@@ -58,6 +62,49 @@ const legacyMedia = [
     src: "/legacy/logo.webm",
     fallback: "/legacy/logo.mp4",
     copy: "ブランドの動きは、記憶に残る小さな合図として使います。",
+  },
+];
+
+const photoFragments = [
+  {
+    src: "/legacy/photos/company-top.jpg",
+    alt: "旧サイトの会社紹介ビジュアル",
+    label: "Company mood",
+  },
+  {
+    src: "/legacy/photos/contact-top.jpg",
+    alt: "旧サイトの問い合わせセクションビジュアル",
+    label: "Contact signal",
+  },
+  {
+    src: "/legacy/photos/home-sec2.png",
+    alt: "旧サイトのホームセクション画像",
+    label: "Home fragment",
+  },
+  {
+    src: "/legacy/photos/service-2.jpg",
+    alt: "旧サイトのサービス紹介写真",
+    label: "Service scene",
+  },
+  {
+    src: "/legacy/photos/service-4.jpg",
+    alt: "旧サイトのサービス紹介素材",
+    label: "Making piece",
+  },
+  {
+    src: "/legacy/photos/service-6.jpg",
+    alt: "旧サイトの制作素材",
+    label: "Production bit",
+  },
+  {
+    src: "/legacy/photos/service-7.jpg",
+    alt: "旧サイトの制作写真",
+    label: "Visual proof",
+  },
+  {
+    src: "/legacy/photos/legacy-image.jpg",
+    alt: "旧サイトから引き継いだ写真素材",
+    label: "Archive",
   },
 ];
 
@@ -267,11 +314,34 @@ export default function Home() {
         <div className="service-grid">
           {services.map((service, index) => (
             <article className="service-card" key={service.title}>
+              <div className="service-photo">
+                <Image
+                  src={service.image}
+                  alt={`${service.title}の旧サイト素材`}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 33vw"
+                />
+              </div>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{service.title}</h3>
               <p>{service.copy}</p>
               <strong>{service.outcome}</strong>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section photo-fragments">
+        <div className="section-heading">
+          <p className="eyebrow">Photo Fragments</p>
+          <h2>写真素材を、まじめに並べずに使います。</h2>
+        </div>
+        <div className="photo-grid">
+          {photoFragments.map((photo, index) => (
+            <figure key={photo.src} className={`photo-piece piece-${index + 1}`}>
+              <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
+              <figcaption>{photo.label}</figcaption>
+            </figure>
           ))}
         </div>
       </section>
