@@ -34,6 +34,93 @@ a {
   text-decoration: none;
 }
 
+.intro-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 216, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 78% 70%, rgba(184, 255, 44, 0.18), transparent 30%),
+    var(--ink);
+  color: var(--paper);
+  transition:
+    opacity 0.72s ease,
+    transform 0.72s ease,
+    visibility 0.72s ease;
+}
+
+.intro-splash::before {
+  content: "Ldera boot sequence";
+  position: absolute;
+  left: clamp(18px, 5vw, 64px);
+  top: clamp(18px, 5vw, 56px);
+  color: var(--lime);
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.intro-splash::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 2px dashed rgba(247, 247, 242, 0.28);
+  transform: rotate(-1.4deg);
+  pointer-events: none;
+}
+
+.intro-splash.is-leaving {
+  opacity: 0;
+  transform: scale(1.04) rotate(1deg);
+  visibility: hidden;
+}
+
+.intro-frame {
+  position: relative;
+  width: min(78vw, 780px);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 2px solid var(--paper);
+  border-radius: 8px;
+  background: #000;
+  box-shadow:
+    16px 16px 0 var(--red),
+    -12px -12px 0 var(--cyan);
+}
+
+.intro-frame video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.intro-skip {
+  position: absolute;
+  right: clamp(18px, 5vw, 64px);
+  bottom: clamp(18px, 5vw, 56px);
+  min-height: 42px;
+  border: 2px solid var(--paper);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--paper);
+  padding: 9px 14px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.intro-skip:hover {
+  background: var(--lime);
+  color: var(--ink);
+}
+
 .site-header {
   position: sticky;
   top: 0;

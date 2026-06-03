@@ -1,3 +1,5 @@
+import { IntroSplash } from "@/components/IntroSplash";
+
 const services = [
   {
     title: "映像制作",
@@ -107,8 +109,10 @@ const faqs = [
 
 export default function Home() {
   return (
-    <main>
-      <header className="site-header">
+    <>
+      <IntroSplash />
+      <main>
+        <header className="site-header">
         <a href="#top" className="brand" aria-label="株式会社ルデラ トップへ">
           Ldera
         </a>
@@ -364,6 +368,7 @@ export default function Home() {
           contact@ldera.co.jp
         </a>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
